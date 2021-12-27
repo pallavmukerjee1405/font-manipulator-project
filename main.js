@@ -1,5 +1,3 @@
-noseX=0;
-noseY=0;
 leftwristX=0;
 rightwristX=0;
 difference=0;
@@ -21,10 +19,17 @@ function modelLoaded(){
 
 function draw(){
     background('#888888');
+    document.getElementById("font_size").innerHTML="Font Size of the text will be = "+difference+" px";
+    textSize(10);
+    fill('#B0FC38');
+    text('Pallav',50,400);
 }
 
 function gotPoses(results){
     if(results.length>0){
         console.log(results);
+        leftwristX=results[0].pose.leftWrist.x;
+        rightwristX=results[0].pose.rightWrist.x;
+        difference=floor(leftwristX-rightwristX);
     }
 }
